@@ -15,7 +15,7 @@ app.use(express.json())
 
 // Base Routes
 app.get('/', (req, res) => {
-    res.send("Hi.")
+    res.send("This is the home page.")
 })
 
 app.get('*', (req, res) => {
