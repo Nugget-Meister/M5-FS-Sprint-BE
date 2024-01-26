@@ -11,6 +11,40 @@ const getAllMeetingRooms = async() => {
 
 const createMeetingRoom = async(meeting_room) => {
     try{
-        
+
+    } catch(error){
+        return error
     }
 }
+
+const getMeetingRoom = async(meeting_room) => {
+    try{
+
+    } catch(error){
+        return error
+    }
+}
+
+const updateMeetingRoom = async(meeting_room) => {
+    try{
+
+    } catch(error){
+        return error
+    }
+}
+
+const deleteMeetingRoom = async(meeting_room) => {
+    try{
+
+    } catch(error){
+        return error
+    }
+}
+
+module.exports = {
+    getAllMeetingRooms,
+    createMeetingRoom,
+    getMeetingRoom,
+    updateMeetingRoom,
+    deleteMeetingRoom,
+};
