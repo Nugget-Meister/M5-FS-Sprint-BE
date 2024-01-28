@@ -65,6 +65,7 @@ bookings.get('/:id', async (req, res) => {
 bookings.post('/', async (req, res) => {
     process.stdout.write("POST Request received for 'Bookings'... ")
     const result = await createBooking(req.body)
+    console.log(result)
     if(result.booking_id){ 
         console.log("Success")
         res.status(200).json({
@@ -81,9 +82,9 @@ bookings.post('/', async (req, res) => {
 })
 bookings.put('/:id', async (req, res) => {
     const {id} = req.params
-    process.stdout.write(`PUT Request received for Bookings at id ${id}`)
+    process.stdout.write(`PUT Request received for Bookings at id ${id}... `)
     const result = await updateBooking(id, req.body)
-    if(result.bookng_id){ 
+    if(result.booking_id){ 
         console.log(`Wrote data at id ${id}`)
         res.status(200).json({
             message: `Successfully changed data at id ${id}`,
@@ -100,12 +101,18 @@ bookings.put('/:id', async (req, res) => {
 })
 bookings.delete('/:id', async (req, res) => {
     const {id} = req.params
-    process.stdout.write(`DELETE Request received for Bookings at id ${id}`)
+    process.stdout.write(`DELETE Request received for Bookings at id ${id}... `)
     const result = await deleteBooking(id)
     if (result.booking_id){
         console.log("Success!")
         res.status(200).json({
             message: `Deleted item at id ${id}`,
+            data: null
+        })
+    } else {
+        console.log("Failed");
+        res.status(404).json({
+            message: `Item with id ${id} not found`,
             data: null
         })
     }
