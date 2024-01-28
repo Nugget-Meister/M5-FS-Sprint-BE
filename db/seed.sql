@@ -6,6 +6,6 @@ VALUES
 ('Board Room', 15, 10),
 ('Hub', 30, 1);
 
-INSERT INTO booking(name,meeting_room_id,start_date,end_date,attendees)
+INSERT INTO booking(name,meeting_room_id,start_date,end_date,start_time,end_time,attendees)
 VALUES
-('Hub two', 28, 2024-02-14 12:30:00, 2024-02-14 01:30:00, 'youreemail@gmail.com');
+('Hub two', 1, '2024-02-14', '2024-02-14', '12:30:00', '01:30:00', 'youreemail@gmail.com');
