@@ -1,10 +1,11 @@
-const express= require('express')
+const express = require('express')
 const cors = require('cors')
 
 const app = express()
 
 // Controller Import
 
+const bookingController = require('./controllers/bookingsController');
 
 //
 app.use(cors())
@@ -12,6 +13,7 @@ app.use(express.json())
 
 // Controller use
 
+app.use('/booking', bookingController)
 
 // Base Routes
 app.get('/', (req, res) => {
@@ -24,3 +26,5 @@ app.get('*', (req, res) => {
         data: null
     })
 })
+
+module.exports = app
