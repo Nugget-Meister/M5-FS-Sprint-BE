@@ -2,7 +2,7 @@ const db = require("../db/dbConfig.js");
 
 const getAllMeetingRooms = async () => {
   try {
-    const allMeetingRooms = await db.any("SELECT * FROM meeting_room");
+    const allMeetingRooms = await db.any("SELECT * FROM meeting_room_id");
     return allMeetingRooms;
   } catch (error) {
     return error;
@@ -13,7 +13,7 @@ const createMeetingRoom = async (meeting_room) => {
   try {
     const { name, capacity, floor } = meeting_room;
     const createdMeetingRoom = await db.one(
-      "INSERT INTO meeting_room (name, capacity, floor) VALUES ($1,$2,$3) RETURNING *",
+      "INSERT INTO meeting_room_id (name, capacity, floor) VALUES ($1,$2,$3) RETURNING *",
       [name, capacity, floor]
     );
 
@@ -26,7 +26,7 @@ const createMeetingRoom = async (meeting_room) => {
 const getOneMeetingRoom = async (id) => {
   try {
     const oneMeetingRoom = await db.one(
-      "SELECT * FROM meeting_room WHERE id = $1",
+      "SELECT * FROM meeting_room_id WHERE id = $1",
       id
     );
 
@@ -40,7 +40,7 @@ const updateMeetingRoom = async (meeting_room, id) => {
   try {
     const { name, capacity, floor } = meeting_room;
     const updatedMeetingRoom  = await db.one(
-        "UPDATE meeting_room SET name=$1, capacity=$2, floor=$3 WHERE id=$4 RETURNING *",
+        "UPDATE meeting_room_id SET name=$1, capacity=$2, floor=$3 WHERE id=$4 RETURNING *",
       [name, capacity, floor]
     )
   } catch (error) {
@@ -51,7 +51,7 @@ const updateMeetingRoom = async (meeting_room, id) => {
 const deleteMeetingRoom = async (id) => {
   try {
     const deletedMeetingRoom = await db.one(
-      "DELETE FROM meeting_room WHERE id = $1 RETURNING * ",
+      "DELETE FROM meeting_room_id WHERE id = $1 RETURNING * ",
       id
     );
 
