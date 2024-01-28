@@ -11,7 +11,7 @@ const getAllBookings = async () => {
 }
 const getSingleBooking = async (id) => {
     try{
-        const result = await db.one("SELECT * FROM booking WHERE id=$1", id)
+        const result = await db.one("SELECT * FROM booking WHERE booking_id=$1", id)
         return result
     }
     catch(error){
@@ -37,7 +37,7 @@ const createBooking = async (data) => {
 }
 const updateBooking = async (id, data) => {
     try{
-        const result = await db.one("UPDATE booking SET name=$1, meeting_room_id=$2, start_date=$3, end_date=$4, start_time=$5, end_time=$6, attendees=$7 WHERE id=$8 RETURNING * ", [
+        const result = await db.one("UPDATE booking SET name=$1, meeting_room_id=$2, start_date=$3, end_date=$4, start_time=$5, end_time=$6, attendees=$7 WHERE booking_id=$8 RETURNING * ", [
             data.name,
             data.meeting_room_id,
             data.start_date,

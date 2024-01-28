@@ -12,15 +12,26 @@ const {
 
 bookings.get('/', async (req, res) => {
     const result = await getAllBookings();
-    process.stdout.write("GET Request recieved for ALL items.... ")
+    process.stdout.write("GET Request recieved for ALL items... ")
     if(result){
-        if(result.length == 0){
-            console.log(`Warning - Database returned no results.`)
+        if(result.severity){
+            console.log("Error detected.")
+            res.status(500).json({
+                message: "BAD",
+                data: result
+            })
+        } else {
+            if(result.length == 0){
+                console.log(`Warning - Database returned no results.`)
+            }
+            res.status(200).json({
+                message: "OK",
+                data: result
+            })
         }
-        res.status(200).json({
-            message: "OK",
-            data: result
-        })
+
+       
+        
     } else {
         console.log("500 - Unable to access SQL server.")
         res.status(500).json({
