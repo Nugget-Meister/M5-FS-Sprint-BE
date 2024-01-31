@@ -55,7 +55,7 @@ const updateBooking = async (id, data) => {
 }
 const deleteBooking = async (id) => {
     try{
-        const result = await db.one("DELETE FROM booking WHERE booking_ id=$1 RETURNING *", id)
+        const result = await db.one("DELETE FROM booking WHERE booking_id=$1 RETURNING *", id)
         return result
     }
     catch(error){
