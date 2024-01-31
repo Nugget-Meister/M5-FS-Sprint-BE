@@ -112,6 +112,7 @@ bookings.delete('/:id', async (req, res) => {
         })
     } else {
         console.log("Failed");
+        console.log(result)
         res.status(404).json({
             message: `Item with id ${id} not found`,
             data: null
