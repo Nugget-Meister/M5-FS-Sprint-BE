@@ -12,6 +12,7 @@ const {
 const rooms = express.Router();
 
 rooms.get("/", async (req, res) => {
+  
     const allMeetingRooms = await getAllMeetingRooms();
   
     if (allMeetingRooms[0]) {
