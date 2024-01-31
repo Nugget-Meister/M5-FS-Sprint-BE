@@ -108,7 +108,7 @@ bookings.delete('/:id', async (req, res) => {
         console.log("Success!")
         res.status(200).json({
             message: `Deleted item at id ${id}`,
-            data: null
+            data: result
         })
     } else {
         console.log("Failed");
