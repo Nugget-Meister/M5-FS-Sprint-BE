@@ -21,6 +21,7 @@ bookings.get('/', async (req, res) => {
                 data: result
             })
         } else {
+            console.log("Attempting to dispense.")
             if(result.length == 0){
                 console.log(`Warning - Database returned no results.`)
             }

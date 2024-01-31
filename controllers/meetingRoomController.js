@@ -2,7 +2,7 @@ const express = require('express');
 
 
 const {
-    getAllMeetingRooms,
+  getAllMeetingRooms,
   createMeetingRoom,
   getOneMeetingRoom,
   updateMeetingRoom,
@@ -15,6 +15,8 @@ rooms.get("/", async (req, res) => {
   
     const allMeetingRooms = await getAllMeetingRooms();
   
+    // console.log(allMeetingRooms)
+
     if (allMeetingRooms[0]) {
       res.status(200).json(allMeetingRooms);
     } else {
@@ -25,9 +27,11 @@ rooms.get("/", async (req, res) => {
   rooms.get("/:id", async (req, res) => {
     const {id} = req.params
     const oneRoom = await getOneMeetingRoom(id);
-  if (oneRoom.id) {
+
+  if (oneRoom.meeting_room_id) {
       res.status(200).json(oneRoom);
     } else {
+      console.log(oneRoom)
       res.status(500).json({ error: "Something went wrong!" });
     }
   });
@@ -51,15 +55,16 @@ rooms.get("/", async (req, res) => {
     }
   });
 
-//   rooms.put("/:id", async (req, res) => {
-//     try {
-//         const {id} = req.params;
-//         const updatedMeetingRoom = await updateMeetingRoom(id,req.body);
-//         res.status(200).json(updatedMeetingRoom);
-//     }   catch (error) {
-//         res.status(400).json({error: "janky"});
-//     }
-//   });
+  rooms.put("/:id", async (req, res) => {
+    try {
+      res.status(403).json({message: "Forbidden", data:null})
+        // const {id} = req.params;
+        // const updatedMeetingRoom = await updateMeetingRoom(id,req.body);
+        // res.status(200).json(updatedMeetingRoom);
+    }   catch (error) {
+        // res.status(400).json({error: "janky"});
+    }
+  });
 
 module.exports = rooms;
 
